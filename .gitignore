@@ -1,0 +1,7 @@
+*/venv
+*.csv
+*.zip
+*.rar
+*/.idea
+*/__pycache__
+
