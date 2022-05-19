@@ -19,10 +19,5 @@ def naive_pattern_search(str_array, pattern):
                             break
                 if is_pattern:
                     result.append((array_row, array_column))
-                    print(array_row, array_column)
-                    for pattern_row in range(len(pattern)):
-                        for pattern_column in range(len(pattern[pattern_row])):
-                            print(str_array[array_row + pattern_row][array_column + pattern_column], end='')
-                        print()
 
     return result

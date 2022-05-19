@@ -1,4 +1,5 @@
 from naive_pattern_search import naive_pattern_search
+from rabin_karp_pattern_matching import rabin_karp_pattern_matching
 
 
 def main():
@@ -7,7 +8,8 @@ def main():
 
     sample_data = [char for char in open('1000_pattern.txt', 'r').read().splitlines()]
     pattern = ['ABC', 'B??', 'C??']
-    print(naive_pattern_search(sample_data, pattern))
+    naive_pattern_search(sample_data, pattern)
+    rabin_karp_pattern_matching(sample_data, pattern)
 
 
 if __name__ == '__main__':
