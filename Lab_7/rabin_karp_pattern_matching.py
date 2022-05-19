@@ -1,5 +1,7 @@
 """ Here we will implement the rabin karp matching algorithm for the given pattern. Note that it only works for patterns
 where you have one row and one column of characters. """
+from time import time
+
 d = 17
 q = 101
 
@@ -24,6 +26,7 @@ def rabin_karp_pattern_matching(str_array, pattern):
         h = (d * h) % q
     rows_hashed = []
     row_index = 0
+    hash_start = time()
     for row in str_array:
 
         first_window_hash = 0
@@ -51,7 +54,7 @@ def rabin_karp_pattern_matching(str_array, pattern):
             window_hash = (d * (window_hash - ord(str_array[row_index][col_index]) * h) + ord(
                 str_array[row_index + p_h][col_index])) % q
             cols_hashed[col_index].append(window_hash)
-
+    hash_end = time()
     for i in range(s_w - p_w):
         for j in range(s_h - p_h):
             if pattern_horizontal_hash == rows_hashed[i][j] and pattern_vertical_hash == cols_hashed[j][i]:
@@ -62,4 +65,5 @@ def rabin_karp_pattern_matching(str_array, pattern):
                             is_correct = False
                 if is_correct:
                     results.append((i, j))
+    results.append(hash_end - hash_start)
     return results
