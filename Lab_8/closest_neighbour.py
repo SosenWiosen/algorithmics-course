@@ -5,6 +5,7 @@ from random import randint
 def closest_neighbour(path):
     # solve tsp by creating a path in which the closest neighbour gets chosen
     # choose a random starting point first
+    path = path.copy()
     start_index = randint(0, len(path) - 1)
     new_path = [path[start_index]]
     path.remove(path[start_index])
