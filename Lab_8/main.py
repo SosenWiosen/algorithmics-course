@@ -21,17 +21,16 @@ def main():
                 path.append([float(x), float(y)])
     # path from the files
     print(calculate_path_length(path))
+    plot_path([[i for i in range(len(path))]], path)
     # closest neighbour starting at a random point
-    print(calculate_path_length(closest_neighbour(path)))
+    new_path= closest_neighbour(path)
+    plot_path([[i for i in range(len(path))]], new_path)
+    print(calculate_path_length(new_path))
     distance_matrix = euclidean_distance_matrix(numpy.array(path))
     min_distance = float('inf')
     min_dist_permutation = []
 
-    for i in range(20):
-        permutation, distance = solve_tsp_simulated_annealing(distance_matrix)
-        if distance < min_distance:
-            min_distance = distance
-            min_dist_permutation = permutation
+    permutation, distance = solve_tsp_simulated_annealing(distance_matrix)
     print(distance)
     plot_path([permutation], path)
 
